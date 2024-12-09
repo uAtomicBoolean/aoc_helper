@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aoc_helper"
+version = "0.1.0"
+description = "A python package to automate the repetivite tasks in the advent of code."
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [{ name = "uAtomicBoolean", email = "uatomicboolean@proton.me" }]
+keywords = ["aoc", "aoc helper", "advent of code"]
+classifiers = [
+	"Development Status :: 3 - Alpha",
+	"Intended Audience :: Developers",
+	"Topic :: Software Development :: Libraries",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+requires-python = ">=3.8"
+dependencies = ["requests"]
+
+[project.urls]
+Homepage = "https://github.com/uAtomicBoolean/aoc_helper"
+Documentation = "https://github.com/uAtomicBoolean/aoc_helper#readme"
+Repository = "https://github.com/uAtomicBoolean/aoc_helper"
+Issues = "https://github.com/uAtomicBoolean/aoc_helper/issues"
+
+[project.scripts]
+aoc_helper = "aoc_helper:aoc_helper_cui.main"
