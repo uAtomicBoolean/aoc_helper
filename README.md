@@ -18,7 +18,8 @@ TODO
 ## How to use
 Explain the settings.  
 Explain the decorators.  
-Explain the catch with the @parser() decorator (the fact that iterables needs to be encapsulated in a list to avoid being deconstructed).
+Explain the catch with the @parser() decorator (the fact that iterables needs to be encapsulated in a list to avoid being deconstructed).  
+Explain that it can be used either with multiple days files or with only one file (set_days_folder necessary for multiple files).
 
 ## Development
 TODO 
