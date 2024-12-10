@@ -44,6 +44,7 @@ def __find_main_file(args: list[str]):
             main_file = pathlib.Path(args[0])
             if main_file.exists():
                 return __load_main_file(main_file)
+
         print("Couldn't find the following main file:", args[0], file=sys.stderr)
         sys.exit(1)
 
@@ -63,3 +64,8 @@ def __load_main_file(main_file: pathlib.Path):
     main_spec = importlib.util.spec_from_file_location("main", main_file)
     main_module = importlib.util.module_from_spec(main_spec)
     main_spec.loader.exec_module(main_module)
+
+    # TODO Discover all the files linked to the days.
+    # TODO Tell the user to save his days files in the folder 'days'.
+    # TODO Other options, add a function to load the days. This function would be called from the
+    #   main file and would take the path to the days folder.

@@ -1,4 +1,6 @@
 import sys
+from typing import Union
+
 from . import utils
 from .. import aoc_helper
 
@@ -8,10 +10,16 @@ def main():
     if not len(args):
         print("You must use one of the following command: run, test.")
 
-    if args[0] == "run":
-        return run_command(args[1:])
-    elif args[0] == "test":
-        return test_command(args[1:])
+    command = args[0]
+    args = args[1:]
+
+    targeted_day = utils.__get_day_argument(args)
+    utils.__find_main_file(args)
+
+    if command == "run":
+        return run_command(targeted_day)
+    elif command == "test":
+        return test_command(targeted_day)
 
     print(
         "No command found, please specify a command to run: run, test.", file=sys.stderr
@@ -19,9 +27,7 @@ def main():
     sys.exit(1)
 
 
-def run_command(args: list[str]):
-    targeted_day = utils.__get_day_argument(args)
-    utils.__find_main_file(args)
+def run_command(targeted_day: Union[int, bool] = False):
 
     if targeted_day:
         if targeted_day not in aoc_helper.DAYS:
@@ -58,8 +64,7 @@ def run_command(args: list[str]):
             print("Part two:", puzzle_data.part_two())
 
 
-def test_command(args: list[str]):
-    day_arg = utils.__get_day_argument(args)
-    utils.__find_main_file(args)
+def test_command(targeted_day: Union[int, bool] = False):
+    print(targeted_day)
 
     # TODO
