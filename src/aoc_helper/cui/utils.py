@@ -1,8 +1,11 @@
 import os
 import sys
+import time
 import pathlib
 import importlib
 import importlib.util
+
+from typing import Callable
 
 from .. import aoc_helper
 
@@ -82,3 +85,10 @@ def __load_main_file(main_file: pathlib.Path):
         )
         d_module = importlib.util.module_from_spec(d_spec)
         d_spec.loader.exec_module(d_module)
+
+
+def __bench_execution(func: Callable, part: str):
+    start = time.time()
+    res = func()
+    bench = time.time() - start
+    print(f"Part {part}: {res} ({bench:.2f} ms)")

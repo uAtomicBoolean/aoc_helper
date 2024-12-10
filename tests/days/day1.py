@@ -13,6 +13,9 @@ def parse_input(raw_input: str):
 
 @aoc_helper.part("one", 1)
 def part_one(left: list[str], right: list[str]):
+    i = 0
+    for k in range(10000000):
+        i += k
     return 1
 
 

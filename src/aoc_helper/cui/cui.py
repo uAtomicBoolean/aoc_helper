@@ -42,11 +42,10 @@ def run_command(targeted_day: Union[int, bool] = False):
             )
             sys.exit(1)
 
-        # TODO Add benchmarking
         if day.part_one:
-            print("Part one:", day.part_one())
+            utils.__bench_execution(day.part_one, "one")
         if day.part_two:
-            print("Part two:", day.part_two())
+            utils.__bench_execution(day.part_two, "two")
         return
 
     sorted_days = dict(sorted(aoc_helper.DAYS.items()))
@@ -58,9 +57,9 @@ def run_command(targeted_day: Union[int, bool] = False):
         print("Running day", day)
 
         if puzzle_data.part_one:
-            print("\tPart one:", puzzle_data.part_one())
+            utils.__bench_execution(puzzle_data.part_one, "one")
         if puzzle_data.part_two:
-            print("\tPart two:", puzzle_data.part_two())
+            utils.__bench_execution(puzzle_data.part_two, "two")
         print()
 
 
