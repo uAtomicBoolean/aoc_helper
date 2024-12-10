@@ -1,7 +1,10 @@
+import os
 import sys
 import pathlib
 import importlib
 import importlib.util
+
+from .. import aoc_helper
 
 
 def __get_day_argument(args: list[str]):
@@ -65,7 +68,14 @@ def __load_main_file(main_file: pathlib.Path):
     main_module = importlib.util.module_from_spec(main_spec)
     main_spec.loader.exec_module(main_module)
 
-    # TODO Discover all the files linked to the days.
-    # TODO Tell the user to save his days files in the folder 'days'.
-    # TODO Other options, add a function to load the days. This function would be called from the
-    #   main file and would take the path to the days folder.
+    days_path = pathlib.Path(aoc_helper.DAYS_FOLDER)
+    days = os.listdir(str(days_path))
+    for d in days:
+        if d.startswith("__"):
+            continue
+
+        d_spec = importlib.util.spec_from_file_location(
+            d.replace(".py", ""), days_path.joinpath(d)
+        )
+        d_module = importlib.util.module_from_spec(d_spec)
+        d_spec.loader.exec_module(d_module)

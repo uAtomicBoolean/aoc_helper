@@ -3,13 +3,17 @@ import aoc_helper
 
 @aoc_helper.parser(2)
 def parse_input(raw_input: str):
-    return tuple(raw_input.splitlines())
+    return [raw_input.splitlines()]
 
 
 @aoc_helper.part("one", 2)
 def part_one(lines: list[str]):
-    print(lines)
-    return 2
+    return 2.1
+
+
+@aoc_helper.part("two", 2)
+def part_two(lines: list[str]):
+    return 2.2
 
 
 def test_part_one():

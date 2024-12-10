@@ -8,6 +8,7 @@ from .types import Puzzle
 DAYS: dict[int, Puzzle] = {}
 SESSION_COOKIE = None
 YEAR: int = None
+DAYS_FOLDER: str = None
 
 
 def set_year(year: int):
@@ -19,6 +20,16 @@ def set_year(year: int):
         sys.exit(1)
 
     YEAR = year
+
+
+def set_days_folder(folder: str):
+    global DAYS_FOLDER
+
+    if not folder:
+        print("You must pass a valid path (ex: 'days').", file=sys.stderr)
+        sys.exit(1)
+
+    DAYS_FOLDER = folder
 
 
 def set_session_cookie(cookie: str):

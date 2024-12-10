@@ -49,19 +49,19 @@ def run_command(targeted_day: Union[int, bool] = False):
             print("Part two:", day.part_two())
         return
 
-    for day, puzzle_data in aoc_helper.DAYS.items():
+    sorted_days = dict(sorted(aoc_helper.DAYS.items()))
+    for day, puzzle_data in sorted_days.items():
         if not puzzle_data.part_one and not puzzle_data.part_two:
             continue
 
         # TODO Beautify the display.
-        print("###################################")
         print("Running day", day)
-        print("###################################")
 
         if puzzle_data.part_one:
-            print("Part one:", puzzle_data.part_one())
+            print("\tPart one:", puzzle_data.part_one())
         if puzzle_data.part_two:
-            print("Part two:", puzzle_data.part_two())
+            print("\tPart two:", puzzle_data.part_two())
+        print()
 
 
 def test_command(targeted_day: Union[int, bool] = False):
