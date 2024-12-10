@@ -68,6 +68,9 @@ def __load_main_file(main_file: pathlib.Path):
     main_module = importlib.util.module_from_spec(main_spec)
     main_spec.loader.exec_module(main_module)
 
+    if not aoc_helper.DAYS_FOLDER:
+        return
+
     days_path = pathlib.Path(aoc_helper.DAYS_FOLDER)
     days = os.listdir(str(days_path))
     for d in days:
