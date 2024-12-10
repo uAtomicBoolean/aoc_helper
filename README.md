@@ -15,5 +15,10 @@ Explain the functionnalities: auto-downloading the inputs, benchmarking the func
 ## Installation
 TODO  
 
+## How to use
+Explain the settings.  
+Explain the decorators.  
+Explain the catch with the @parser() decorator (the fact that iterables needs to be encapsulated in a list to avoid being deconstructed).
+
 ## Development
 TODO 
