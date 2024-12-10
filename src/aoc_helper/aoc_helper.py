@@ -1,14 +1,29 @@
 import sys
+import datetime
 from collections.abc import Iterable
 from .utils import __download_and_get_input
 from .types import Puzzle
 
+
 DAYS: dict[int, Puzzle] = {}
 SESSION_COOKIE = None
+YEAR: int = None
+
+
+def set_year(year: int):
+    global YEAR
+
+    current_year = datetime.date.today().year
+    if year < 2015 or year > current_year:
+        print(f"You can't define a year superior to {current_year}.", file=sys.stderr)
+        sys.exit(1)
+
+    YEAR = year
 
 
 def set_session_cookie(cookie: str):
     global SESSION_COOKIE
+
     if not cookie:
         raise ValueError("Cookie must not be empty.")
     SESSION_COOKIE = cookie
@@ -32,6 +47,10 @@ def parser(day: int):
 
     def wrapper(func):
         def new_func():
+            if not YEAR:
+                print("You must set the year of the calendar.", file=sys.stderr)
+                sys.exit(1)
+
             if not SESSION_COOKIE:
                 print(
                     "Please, set your session cookie at the start of the code.",
@@ -39,7 +58,7 @@ def parser(day: int):
                 )
                 sys.exit(1)
 
-            day_input = __download_and_get_input(day, SESSION_COOKIE)
+            day_input = __download_and_get_input(YEAR, day, SESSION_COOKIE)
             return func(day_input)
 
         curr_day: Puzzle = DAYS.get(day, Puzzle())
@@ -102,6 +121,15 @@ def part(part: str, day: int):
             if isinstance(day_input, Iterable):
                 return func(*day_input)
             return func(day_input)
+
+        curr_day: Puzzle = DAYS.get(day, Puzzle())
+
+        if part == "one":
+            curr_day.part_one = new_func
+        elif part == "two":
+            curr_day.part_two = new_func
+
+        DAYS[day] = curr_day
 
         return new_func
 

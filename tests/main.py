@@ -1,9 +1,12 @@
+import os
 import aoc_helper
 
-aoc_helper.set_session_cookie("YOUR COOKIE")
+
+aoc_helper.set_year(2024)
+aoc_helper.set_session_cookie(os.getenv("SESSION_COOKIE"))
 
 
-@aoc_helper.parser(1)
+@aoc_helper.parser(2)
 def parse_input(raw_input: str):
     lines = raw_input.split("\n")
     left, right = [], []
@@ -13,10 +16,17 @@ def parse_input(raw_input: str):
     return left, right
 
 
-@aoc_helper.part("one", 1)
+@aoc_helper.part("one", 2)
 def part_one(left: list[str], right: list[str]):
-    print(len(left), len(right))
+    return 4
+
+
+def test_part_one():
+    assert part_one() == 4
+
+
+def test_part_two():
+    assert part_one() == 4
 
 
 part_one()
-part_one([1, 2, 3], [4, 5, 6])
