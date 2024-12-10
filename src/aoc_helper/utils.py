@@ -27,6 +27,9 @@ def __download_and_get_input(year: int, day: int, SESSION_COOKIE: str):
         with requests.get(
             f"https://adventofcode.com/{year}/day/{day}/input",
             cookies={"session": SESSION_COOKIE},
+            headers={
+                "User-Agent": "github.com/uAtomicBoolean/aoc_helper by uatomicboolean@proton.me"
+            },
         ) as req:
             if req.status_code == 400:
                 print(
