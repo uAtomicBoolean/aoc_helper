@@ -18,8 +18,6 @@ def main():
 
     if command == "run":
         return run_command(targeted_day)
-    elif command == "test":
-        return test_command(targeted_day)
 
     print(
         "No command found, please specify a command to run: run, test.", file=sys.stderr
@@ -28,7 +26,6 @@ def main():
 
 
 def run_command(targeted_day: Union[int, bool] = False):
-
     if targeted_day:
         if targeted_day not in aoc_helper.DAYS:
             print("No functions were defined for the targeted day.", file=sys.stderr)
@@ -53,7 +50,6 @@ def run_command(targeted_day: Union[int, bool] = False):
         if not puzzle_data.part_one and not puzzle_data.part_two:
             continue
 
-        # TODO Beautify the display.
         print("Running day", day)
 
         if puzzle_data.part_one:
@@ -61,9 +57,3 @@ def run_command(targeted_day: Union[int, bool] = False):
         if puzzle_data.part_two:
             utils.__bench_execution(puzzle_data.part_two, "two")
         print()
-
-
-def test_command(targeted_day: Union[int, bool] = False):
-    print(targeted_day)
-
-    # TODO
