@@ -77,12 +77,10 @@ def __load_main_file(main_file: pathlib.Path):
     days_path = pathlib.Path(aoc_helper.DAYS_FOLDER)
     days = os.listdir(str(days_path))
     for d in days:
-        if d.startswith("__"):
+        if d.startswith("__") or "cache" in d:
             continue
 
-        d_spec = importlib.util.spec_from_file_location(
-            d.replace(".py", ""), days_path.joinpath(d)
-        )
+        d_spec = importlib.util.spec_from_file_location(d, days_path.joinpath(d))
         d_module = importlib.util.module_from_spec(d_spec)
         d_spec.loader.exec_module(d_module)
 

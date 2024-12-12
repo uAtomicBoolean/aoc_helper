@@ -44,7 +44,8 @@ To get your session cookie from the Advent of code:
 - **Chrome/Brave** : press F12 and open the `Application` tab, then open the cookies for `adventofcode.com` and copy the value of `session`.  
 
 ### Solve the puzzles:  
-Once this is done, you can create a file with any name in the days folder and use the following decorators to parse the input and solve the parts.
+Once this is done, you can create a file with any name in the days folder and use the following decorators to parse the input and solve the parts.  
+Please note that both part functions need to have the same parameters.
 ```python
 import aoc_helper
 
@@ -69,6 +70,23 @@ def part_one(lines: list[str]):
 @aoc_helper.part("two", 1)
 def part_two(lines: list[str]):
 	# Solve the part and return your result.
+	return "result"
+```  
+
+You can also return more than one value from the parsing function.
+```python
+@aoc_helper.parser(1)
+def input_parser(input: str):
+	return left, right
+
+
+@aoc_helper.part("one", 1)
+def part_one(left: list[str], right: list[str]):
+	return "result"
+
+
+@aoc_helper.part("two", 1)
+def part_two(left: list[str], right: list[str]):
 	return "result"
 ```
 
