@@ -131,12 +131,12 @@ def part(part: str, day: int):
 
             day_input = curr_day.parse_input()
 
-            start = time.time()
+            start = time.perf_counter()
             if isinstance(day_input, Iterable):
                 res = func(*day_input)
             else:
                 res = func(day_input)
-            return time.time() - start, res
+            return time.perf_counter() - start, res
 
         curr_day: Puzzle = DAYS.get(day, Puzzle())
 

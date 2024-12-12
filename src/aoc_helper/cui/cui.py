@@ -41,10 +41,10 @@ def run_command(targeted_day: Union[int, bool] = False):
 
         if day.part_one:
             bench, res = day.part_one()
-            print(f"Part one: {res} ({bench:.2f}s)")
+            print(f"Part one: {res} ({bench:.4f}secs)")
         if day.part_two:
             bench, res = day.part_one()
-            print(f"Part two: {res} ({bench:.2f}s)")
+            print(f"Part two: {res} ({bench:.4f}secs)")
         return
 
     sorted_days = dict(sorted(aoc_helper.DAYS.items()))
@@ -56,9 +56,9 @@ def run_command(targeted_day: Union[int, bool] = False):
 
         if puzzle_data.part_one:
             bench, res = puzzle_data.part_one()
-            print(f"Part one: {res} ({bench:.2f}s)")
+            print(f"Part one: {res} ({bench:.4f}secs)")
         if puzzle_data.part_two:
             bench, res = puzzle_data.part_one()
-            print(f"Part one: {res} ({bench:.2f}s)")
+            print(f"Part one: {res} ({bench:.4f}secs)")
 
         print()
