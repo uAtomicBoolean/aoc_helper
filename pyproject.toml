@@ -22,7 +22,7 @@ classifiers = [
   "Programming Language :: Python :: 3.12",
 ]
 requires-python = ">=3.8"
-dependencies = ["requests", "pytest"]
+dependencies = ["requests"]
 
 [project.urls]
 Homepage = "https://github.com/uAtomicBoolean/aoc_helper"
