@@ -40,9 +40,11 @@ def run_command(targeted_day: Union[int, bool] = False):
             sys.exit(1)
 
         if day.part_one:
-            utils.__bench_execution(day.part_one, "one")
+            bench, res = day.part_one()
+            print(f"Part one: {res} ({bench:.2f} ms)")
         if day.part_two:
-            utils.__bench_execution(day.part_two, "two")
+            bench, res = day.part_one()
+            print(f"Part two: {res} ({bench:.2f} ms)")
         return
 
     sorted_days = dict(sorted(aoc_helper.DAYS.items()))
@@ -53,7 +55,10 @@ def run_command(targeted_day: Union[int, bool] = False):
         print("Running day", day)
 
         if puzzle_data.part_one:
-            utils.__bench_execution(puzzle_data.part_one, "one")
+            bench, res = puzzle_data.part_one()
+            print(f"Part one: {res} ({bench:.2f} ms)")
         if puzzle_data.part_two:
-            utils.__bench_execution(puzzle_data.part_two, "two")
+            bench, res = puzzle_data.part_one()
+            print(f"Part one: {res} ({bench:.2f} ms)")
+
         print()

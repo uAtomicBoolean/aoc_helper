@@ -1,4 +1,5 @@
 import sys
+import time
 import datetime
 from collections.abc import Iterable
 from .utils import __download_and_get_input
@@ -129,9 +130,13 @@ def part(part: str, day: int):
                 sys.exit(1)
 
             day_input = curr_day.parse_input()
+
+            start = time.time()
             if isinstance(day_input, Iterable):
-                return func(*day_input)
-            return func(day_input)
+                res = func(*day_input)
+            else:
+                res = func(day_input)
+            return time.time() - start, res
 
         curr_day: Puzzle = DAYS.get(day, Puzzle())
 

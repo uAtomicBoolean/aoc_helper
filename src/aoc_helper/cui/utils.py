@@ -83,10 +83,3 @@ def __load_main_file(main_file: pathlib.Path):
         d_spec = importlib.util.spec_from_file_location(d, days_path.joinpath(d))
         d_module = importlib.util.module_from_spec(d_spec)
         d_spec.loader.exec_module(d_module)
-
-
-def __bench_execution(func: Callable, part: str):
-    start = time.time()
-    res = func()
-    bench = time.time() - start
-    print(f"Part {part}: {res} ({bench:.2f} ms)")
