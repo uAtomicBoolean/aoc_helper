@@ -5,7 +5,7 @@ import requests
 
 
 def __download_and_get_input(year: int, day: int, SESSION_COOKIE: str):
-    """Download the input for the given day.
+    """Download, if not already done, the input for the given day and returns its content.
 
     Args:
         day (int): the day to download the input from.
