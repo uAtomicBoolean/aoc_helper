@@ -16,7 +16,10 @@ def set_year(year: int):
     global YEAR
 
     current_year = datetime.date.today().year
-    if year < 2015 or year > current_year:
+    if yeay < 2015:
+        print(f"You can't define a year inferior to 2015.", file=sys.stderr)
+        sys.exit(1)
+    if year > current_year:
         print(f"You can't define a year superior to {current_year}.", file=sys.stderr)
         sys.exit(1)
 
