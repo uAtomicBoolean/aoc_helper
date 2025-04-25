@@ -99,7 +99,7 @@ aoc_helper run
 # Run only one day.
 aoc_helper run --day 1
 
-# Specify what is the main file.
+# Specify the path to the main file.
 aoc_helper run aoc.py
 
 # Or with one day
